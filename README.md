@@ -1,5 +1,5 @@
 # Bash Cat With Cat
-This is a fork of [bashCatWithKitten](https://github.com/GuidoFe/bashCatWithKitten). I just gave the cat a tail.
+This is a fork of [GuidoFe/bash-cat-with-cat](https://github.com/GuidoFe/bash-cat-with-cat). I just gave the cat a tail.
 
 ## Original Description
 The classic cat command but with a cat. Perfect as an alias. It fallbacks to the original cat if the command is used with pipes.
