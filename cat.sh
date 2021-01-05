@@ -1,6 +1,6 @@
 #!/bin/bash
 if [ ! -t 1 ] ; then
-  cat $@
+  cat "$@"
   exit 0
 fi
 
@@ -28,19 +28,33 @@ t[9]='   U    '
 #                               #
 #################################
 
-# Drawing width without newlines
+# Drawing width
+
 DRAWING_WIDTH=8
+
+# At which index of the array t (declared above) should
+# print the input file
+
 OUTPUT_INDEX=3
+
+# Characters to use for the text delimiter, and at which
+# indices they should be printed
+
 UPPER_LINE_CHAR="―"
+LOWER_LINE_CHAR="_"
 UPPER_LINE_INDEX=2
 LOWER_LINE_INDEX=4
-LOWER_LINE_CHAR="_"
+
+# Padding before and after the printed file. No padding
+# could give unwanted results (see issue #4)
+
+PADDING=1
 
 # Percentage that indicates the position of the drawing
 # in the terminal. 0 = align to the left, 100 = align to 
 # the right
 
-DRAWING_POSITION=50
+DRAWING_POSITION=25
 
 
 #################################
@@ -59,7 +73,13 @@ fi
 echo ""
 for i in $(seq 0 $arrayLen); do
   if [[ $i = $OUTPUT_INDEX ]]; then
-    cat $@
+    for n in $(seq 1 $PADDING); do
+      echo ""
+    done
+    cat "$@"
+    for n in $(seq 1 $PADDING); do
+      echo ""
+    done
   else
     car=""
     if [[ $i = $UPPER_LINE_INDEX ]]; then
